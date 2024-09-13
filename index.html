@@ -11,7 +11,7 @@
             text-align: center;
             padding: 50px;
         }
-        #ride-list {
+        #pokemon-list {
             margin: 20px 0;
         }
         button {
@@ -27,9 +27,9 @@
     </style>
 </head>
 <body>
-    <h1>Welcome to the Favorite Ride Picker!</h1>
+    <h1>Welcome to the Pokémon Favorite Picker!</h1>
     <div id="ride-list"></div>
-    <button id="next">Start Tournament</button>
+    <button id="next">Next Match</button>
     <div id="winner"></div>
 
     <script>
@@ -39,7 +39,7 @@
             'Avatar Flight of Passage',
             'Barnstormer',
             'Big Thunder Mountain Railroad',
-            'Buzz Lightyear\'s Space Ranger Spin',
+            'Buzz Lightyears Space Ranger Spin',
             'DINOSAUR',
             'Dumbo',
             'Expedition Everest',
@@ -47,8 +47,8 @@
             'Gran Fiesta Tour',
             'Guardians of the Galaxy: Cosmic Rewind',
             'Haunted Mansion',
-            'It\'s a Small World',
-            'It\'s Tough to be a Bug',
+            'Its a Small World',
+            'Its Tough to be a Bug',
             'Journey into Imagination',
             'Jungle Cruise',
             'Kali River Rapids',
@@ -58,23 +58,23 @@
             'Mad Tea Party',
             'Magic Carpets',
             'Many Adventures of Winnie the Pooh',
-            'Millennium Falcon: Smugglers Run',
+            'Millenium Falcon: Smugglers Run',
             'Mission Space',
             'Navi River Journey',
             'Peter Pan',
             'Pirates of the Caribbean',
-            'Prince Charming Regal Carousel',
-            'Rock 'n' Roller Coaster',
+            'Prince Charming Regal Carrousel',
+            'Rock n Roller Coaster',
             'The Seas with Nemo & Friends',
-            'Seven Dwarfs Mine Train',
+            'Seven Dwarves Mine Train',
             'Slinky Dog Dash',
-            'Soarin' Around the World',
+            'Soarin Around the World',
             'Space Mountain',
             'Spaceship Earth',
             'Star Tours',
             'Rise of the Resistance',
             'Test Track',
-            'Tiana\'s Bayou Adventure',
+            'Tianas Bayou Adventure',
             'Tomorrowland Transit Authority PeopleMover',
             'Toy Story Mania',
             'TriceraTop Spin',
@@ -99,51 +99,3 @@
             if (currentMatch.length < 2) {
                 displayWinner(currentMatch[0]);
                 return;
-            }
-
-            currentMatch = shuffle(currentMatch);
-            const match = currentMatch.splice(0, 2);
-            displayMatch(match);
-        }
-
-        function displayMatch(match) {
-            const rideListDiv = document.getElementById('ride-list');
-            rideListDiv.innerHTML = `
-                <h2>Match: ${match[0]} vs ${match[1]}</h2>
-                <button onclick="chooseWinner('${match[0]}')">${match[0]}</button>
-                <button onclick="chooseWinner('${match[1]}')">${match[1]}</button>
-            `;
-        }
-
-        function chooseWinner(winner) {
-            winners.push(winner);
-            nextMatch();
-        }
-
-        function displayWinner(winner) {
-            const winnerDiv = document.getElementById('winner');
-            winnerDiv.innerHTML = `Your favorite ride is: <span style="color: green;">${winner}</span>`;
-            document.getElementById('ride-list').innerHTML = '';
-            document.getElementById('next').style.display = 'none';
-        }
-
-        function shuffle(array) {
-            for (let i = array.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [array[i], array[j]] = [array[j], array[i]];
-            }
-            return array;
-        }
-
-        // Ensure the button triggers the tournament on click
-        document.getElementById('next').onclick = function() {
-            if (this.textContent === "Start Tournament") {
-                startTournament();
-                this.textContent = "Next Match"; // Change button text after starting
-            } else {
-                nextMatch();
-            }
-        };
-    </script>
-</body>
-</html>
