@@ -27,7 +27,7 @@
     </style>
 </head>
 <body>
-    <h1>Welcome to the Pokémon Favorite Picker!</h1>
+    <h1>Welcome to the Favorite Ride Picker!</h1>
     <div id="ride-list"></div>
     <button id="next">Next Match</button>
     <div id="winner"></div>
@@ -109,7 +109,7 @@
         function displayMatch(match) {
             const rideListDiv = document.getElementById('ride-list');
             rideListDiv.innerHTML = `
-                <h2>Match: ${match[0]} vs ${match[1]}</h2>
+                <h2>${match[0]} or ${match[1]}</h2>
                 <button onclick="chooseWinner('${match[0]}')">${match[0]}</button>
                 <button onclick="chooseWinner('${match[1]}')">${match[1]}</button>
             `;
