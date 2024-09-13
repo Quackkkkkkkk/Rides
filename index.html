@@ -29,7 +29,7 @@
 <body>
     <h1>Welcome to the Favorite Ride Picker!</h1>
     <div id="ride-list"></div>
-    <button id="next">Next Match</button>
+    <button id="next">Start Tournament</button>
     <div id="winner"></div>
 
     <script>
@@ -97,7 +97,8 @@
 
         function nextMatch() {
             if (currentMatch.length < 2) {
-                displayWinner(currentMatch[0]);
+                const favoriteRide = winners[Math.floor(Math.random() * winners.length)];
+                displayWinner(favoriteRide);
                 return;
             }
             currentMatch = shuffle(currentMatch);
