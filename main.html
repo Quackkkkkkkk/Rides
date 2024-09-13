@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Favorite Pokémon Picker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            text-align: center;
+            padding: 50px;
+        }
+        #pokemon-list {
+            margin: 20px 0;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            cursor: pointer;
+        }
+        #winner {
+            margin-top: 20px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to the Pokémon Favorite Picker!</h1>
+    <div id="pokemon-list"></div>
+    <button id="next">Next Match</button>
+    <div id="winner"></div>
+
+    <script>
+        const pokemonList = [
+            'Pikachu',
+            'Charmander',
+            'Bulbasaur',
+            'Squirtle',
+            'Eevee',
+            'Jigglypuff',
+            'Gengar',
+            'Snorlax',
+            'Mewtwo',
+            'Dragonite'
+        ];
+
+        let currentMatch = [];
+        let winners = [];
+
+        function startTournament() {
+            winners = [];
+            currentMatch = pokemonList.slice();
+            nextMatch();
+        }
+
+        function nextMatch() {
+            if (currentMatch.length < 2) {
+                displayWinner(currentMatch[0]);
+                return;
+            }
+
+            currentMatch = shuffle(currentMatch);
+            const match = currentMatch.splice(0, 2);
+            displayMatch(match);
+        }
+
+        function displayMatch(match) {
+            const pokemonListDiv = document.getElementById('pokemon-list');
+            pokemonListDiv.innerHTML = `
+                <h2>Match: ${match[0]} vs ${match[1]}</h2>
+                <button onclick="chooseWinner('${match[0]}')">${match[0]}</button>
+                <button onclick="chooseWinner('${match[1]}')">${match[1]}</button>
+            `;
+        }
+
+        function chooseWinner(winner) {
+            winners.push(winner);
+            nextMatch();
+        }
+
+        function displayWinner(winner) {
+            const winnerDiv = document.getElementById('winner');
+            winnerDiv.innerHTML = `Your favorite Pokémon is: <span style="color: green;">${winner}</span>`;
+            document.getElementById('pokemon-list').innerHTML = '';
+            document.getElementById('next').style.display = 'none';
+        }
+
+        function shuffle(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        document.getElementById('next').onclick = startTournament;
+    </script>
+</body>
+</html>
