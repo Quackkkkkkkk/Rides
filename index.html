@@ -11,7 +11,7 @@
             text-align: center;
             padding: 50px;
         }
-        #pokemon-list {
+        #ride-list {
             margin: 20px 0;
         }
         button {
@@ -100,7 +100,6 @@
                 displayWinner(currentMatch[0]);
                 return;
             }
-
             currentMatch = shuffle(currentMatch);
             const match = currentMatch.splice(0, 2);
             displayMatch(match);
@@ -109,7 +108,7 @@
         function displayMatch(match) {
             const rideListDiv = document.getElementById('ride-list');
             rideListDiv.innerHTML = `
-                <h2>${match[0]} or ${match[1]}</h2>
+                <h2>Match: ${match[0]} vs ${match[1]}</h2>
                 <button onclick="chooseWinner('${match[0]}')">${match[0]}</button>
                 <button onclick="chooseWinner('${match[1]}')">${match[1]}</button>
             `;
