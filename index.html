@@ -97,6 +97,7 @@
 
         function nextMatch() {
             if (currentMatch.length < 2) {
+                // If there are no matches left, declare the winner
                 const finalWinner = winners[0]; // The last winner left is the favorite ride
                 displayWinner(finalWinner);
                 return;
