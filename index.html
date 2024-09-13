@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Favorite Pokémon Picker</title>
+    <title>Favorite Ride Picker</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -11,7 +11,7 @@
             text-align: center;
             padding: 50px;
         }
-        #pokemon-list {
+        #ride-list {
             margin: 20px 0;
         }
         button {
@@ -27,19 +27,19 @@
     </style>
 </head>
 <body>
-    <h1>Welcome to the Pokémon Favorite Picker!</h1>
-    <div id="pokemon-list"></div>
+    <h1>Welcome to the Favorite Ride Picker!</h1>
+    <div id="ride-list"></div>
     <button id="next">Next Match</button>
     <div id="winner"></div>
 
     <script>
-        const pokemonList = [
+        const rideList = [
             'Alien Swirling Saucers',
             'Astro Orbiter',
             'Avatar Flight of Passage',
             'Barnstormer',
             'Big Thunder Mountain Railroad',
-            'Buzz Lightyears Space Ranger Spin',
+            'Buzz Lightyear\'s Space Ranger Spin',
             'DINOSAUR',
             'Dumbo',
             'Expedition Everest',
@@ -47,8 +47,8 @@
             'Gran Fiesta Tour',
             'Guardians of the Galaxy: Cosmic Rewind',
             'Haunted Mansion',
-            'Its a Small World',
-            'Its Tough to be a Bug',
+            'It\'s a Small World',
+            'It\'s Tough to be a Bug',
             'Journey into Imagination',
             'Jungle Cruise',
             'Kali River Rapids',
@@ -58,23 +58,23 @@
             'Mad Tea Party',
             'Magic Carpets',
             'Many Adventures of Winnie the Pooh',
-            'Millenium Falcon: Smugglers Run',
+            'Millennium Falcon: Smugglers Run',
             'Mission Space',
             'Navi River Journey',
             'Peter Pan',
             'Pirates of the Caribbean',
-            'Prince Charming Regal Carrousel',
-            'Rock n Roller Coaster',
+            'Prince Charming Regal Carousel',
+            'Rock 'n' Roller Coaster',
             'The Seas with Nemo & Friends',
-            'Seven Dwarves Mine Train',
+            'Seven Dwarfs Mine Train',
             'Slinky Dog Dash',
-            'Soarin Around the World',
+            'Soarin' Around the World',
             'Space Mountain',
             'Spaceship Earth',
             'Star Tours',
             'Rise of the Resistance',
             'Test Track',
-            'Tianas Bayou Adventure',
+            'Tiana's Bayou Adventure',
             'Tomorrowland Transit Authority PeopleMover',
             'Toy Story Mania',
             'TriceraTop Spin',
@@ -91,7 +91,7 @@
 
         function startTournament() {
             winners = [];
-            currentMatch = pokemonList.slice();
+            currentMatch = rideList.slice();
             nextMatch();
         }
 
@@ -107,8 +107,8 @@
         }
 
         function displayMatch(match) {
-            const pokemonListDiv = document.getElementById('pokemon-list');
-            pokemonListDiv.innerHTML = `
+            const rideListDiv = document.getElementById('ride-list');
+            rideListDiv.innerHTML = `
                 <h2>Match: ${match[0]} vs ${match[1]}</h2>
                 <button onclick="chooseWinner('${match[0]}')">${match[0]}</button>
                 <button onclick="chooseWinner('${match[1]}')">${match[1]}</button>
@@ -122,8 +122,8 @@
 
         function displayWinner(winner) {
             const winnerDiv = document.getElementById('winner');
-            winnerDiv.innerHTML = `Your favorite Pokémon is: <span style="color: green;">${winner}</span>`;
-            document.getElementById('pokemon-list').innerHTML = '';
+            winnerDiv.innerHTML = `Your favorite ride is: <span style="color: green;">${winner}</span>`;
+            document.getElementById('ride-list').innerHTML = '';
             document.getElementById('next').style.display = 'none';
         }
 
