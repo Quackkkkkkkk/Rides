@@ -29,7 +29,7 @@
 <body>
     <h1>Welcome to the Favorite Ride Picker!</h1>
     <div id="ride-list"></div>
-    <button id="next">Next Match</button>
+    <button id="next">Start Tournament</button>
     <div id="winner"></div>
 
     <script>
@@ -74,7 +74,7 @@
             'Star Tours',
             'Rise of the Resistance',
             'Test Track',
-            'Tiana's Bayou Adventure',
+            'Tiana\'s Bayou Adventure',
             'Tomorrowland Transit Authority PeopleMover',
             'Toy Story Mania',
             'TriceraTop Spin',
@@ -135,7 +135,15 @@
             return array;
         }
 
-        document.getElementById('next').onclick = startTournament;
+        // Ensure the button triggers the tournament on click
+        document.getElementById('next').onclick = function() {
+            if (this.textContent === "Start Tournament") {
+                startTournament();
+                this.textContent = "Next Match"; // Change button text after starting
+            } else {
+                nextMatch();
+            }
+        };
     </script>
 </body>
 </html>
